@@ -8,12 +8,12 @@ https://wiki.volkszaehler.org/howto/node-red
 
 ## hardware
 
-| # |  | link |
-|---|---|---|
-| energy meter     | Apator Lepus | http://www.apator.com/de/produkte/strommessung/stromzaehler/neuheiten/lepus |
-| IR Lesekopf      | bitShake SmartMeterReader - UART | IR Lesekopf ||
-| Raspberry PI 3B+ |  |  |
-| case             | italtronic | https://www.pollin.de/p/italtronic-hutschienengehaeuse-10-0012225-rmb-fuer-raspberry-pi-b-460517?utm_source=google&utm_medium=fshopping&gclid=EAIaIQobChMIpofNxumE-wIVj613Ch0MdQGqEAQYAiABEgJhRPD_BwE |
+| Device           | Type                             | Link                                                                                                                                                                                                  |
+|------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| energy meter     | Apator Lepus                     | http://www.apator.com/de/produkte/strommessung/stromzaehler/neuheiten/lepus                                                                                                                           |
+| IR Lesekopf      | bitShake SmartMeterReader - UART | IR Lesekopf                                                                                                                                                                                           ||
+| Raspberry PI 3B+ |                                  |                                                                                                                                                                                                       |
+| case             | italtronic                       | https://www.pollin.de/p/italtronic-hutschienengehaeuse-10-0012225-rmb-fuer-raspberry-pi-b-460517?utm_source=google&utm_medium=fshopping&gclid=EAIaIQobChMIpofNxumE-wIVj613Ch0MdQGqEAQYAiABEgJhRPD_BwE |
 
 ## installation
 https://wiki.volkszaehler.org/howto/raspberry_pi_image  
@@ -22,7 +22,7 @@ https://wiki.volkszaehler.org/howto/raspberry_pi_image
 https://wiki.volkszaehler.org/software/controller/vzlogger/vzlogger_conf_parameter
 http://volkszaehler.github.io/vzlogger/
 
-(OBIS codes)[https://www.promotic.eu/en/pmdoc/Subsystems/Comm/PmDrivers/IEC62056_OBIS.htm]
+[OBIS codes](https://www.promotic.eu/en/pmdoc/Subsystems/Comm/PmDrivers/IEC62056_OBIS.htm)
 
 
 ## services
