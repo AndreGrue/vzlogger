@@ -1,13 +1,13 @@
 # volkszaehler
 
-volkszaehler.org
-https://wiki.volkszaehler.org/howto/raspberry_pi_image
-https://wiki.volkszaehler.org/howto/datenmengen
-https://wiki.volkszaehler.org/howto/node-red
+volkszaehler.org   
+https://wiki.volkszaehler.org/howto/raspberry_pi_image  
+https://wiki.volkszaehler.org/howto/datenmengen   
+https://wiki.volkszaehler.org/howto/node-red   
 
 
 ## hardware
-bitShake SmartMeterReader - UART | IR Lesekopf
+bitShake SmartMeterReader - UART | IR Lesekopf   
 https://www.pollin.de/p/italtronic-hutschienengehaeuse-10-0012225-rmb-fuer-raspberry-pi-b-460517?utm_source=google&utm_medium=fshopping&gclid=EAIaIQobChMIpofNxumE-wIVj613Ch0MdQGqEAQYAiABEgJhRPD_BwE
 
 
@@ -41,8 +41,14 @@ sudo systemctl disable *
 ~~~
 
 ## crontab
+~~~
 sudo crontab -e
+~~~
+
+enter the following line 
+~~~
 00 3 * * * /sbin/shutdown -r now
+~~~
 
 ## logrotate
 Change log file path in /etc/logrotate/vzlogger to /var/log/vzlogger/vzlogger.log
