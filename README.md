@@ -1,19 +1,22 @@
 # volkszaehler
 
 volkszaehler.org   
-https://wiki.volkszaehler.org/howto/raspberry_pi_image  
+
 https://wiki.volkszaehler.org/howto/datenmengen   
 https://wiki.volkszaehler.org/howto/node-red   
 
 
 ## hardware
-bitShake SmartMeterReader - UART | IR Lesekopf   
-https://www.pollin.de/p/italtronic-hutschienengehaeuse-10-0012225-rmb-fuer-raspberry-pi-b-460517?utm_source=google&utm_medium=fshopping&gclid=EAIaIQobChMIpofNxumE-wIVj613Ch0MdQGqEAQYAiABEgJhRPD_BwE
 
+| # |  | link |
+|---|---|---|
+| energy meter     | Apator Lepus | http://www.apator.com/de/produkte/strommessung/stromzaehler/neuheiten/lepus |
+| IR Lesekopf      | bitShake SmartMeterReader - UART | IR Lesekopf ||
+| Raspberry PI 3B+ |  |  |
+| case             | italtronic | https://www.pollin.de/p/italtronic-hutschienengehaeuse-10-0012225-rmb-fuer-raspberry-pi-b-460517?utm_source=google&utm_medium=fshopping&gclid=EAIaIQobChMIpofNxumE-wIVj613Ch0MdQGqEAQYAiABEgJhRPD_BwE |
 
-## Stromzähler
-http://www.apator.com/de/produkte/strommessung/stromzaehler/neuheiten/lepus
-
+## installation
+https://wiki.volkszaehler.org/howto/raspberry_pi_image  
 
 ## configuration
 https://wiki.volkszaehler.org/software/controller/vzlogger/vzlogger_conf_parameter
