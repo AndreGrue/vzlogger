@@ -20,7 +20,10 @@ https://wiki.volkszaehler.org/howto/raspberry_pi_image
 
 ## configuration
 https://wiki.volkszaehler.org/software/controller/vzlogger/vzlogger_conf_parameter
-https://www.promotic.eu/en/pmdoc/Subsystems/Comm/PmDrivers/IEC62056_OBIS.htm
+http://volkszaehler.github.io/vzlogger/
+
+(OBIS codes)[https://www.promotic.eu/en/pmdoc/Subsystems/Comm/PmDrivers/IEC62056_OBIS.htm]
+
 
 ## services
 relevant services:  
