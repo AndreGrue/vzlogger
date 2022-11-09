@@ -11,32 +11,19 @@ import json
 
 #################################################################################
 config = {}
-config['1a2e9a30-499f-11ed-bc9c-e1eef2f79f94'] = {'uuid': '1a2e9a30-499f-11ed-bc9c-e1eef2f79f94', 'name': 'Energy IN',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['e66150c0-499f-11ed-861f-0bacdd4bde80'] = {'uuid': 'e66150c0-499f-11ed-861f-0bacdd4bde80', 'name': 'Energy OUT',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['836080a0-48d5-11ed-a8d2-b7e8221ba8dc'] = {'uuid': '836080a0-48d5-11ed-a8d2-b7e8221ba8dc', 'name': 'Voltage L1',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['765c38f0-48d5-11ed-a701-6de734b17f2c'] = {'uuid': '765c38f0-48d5-11ed-a701-6de734b17f2c', 'name': 'Voltage L2',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['68ed2b30-48d5-11ed-be74-27d2b336553f'] = {'uuid': '68ed2b30-48d5-11ed-be74-27d2b336553f', 'name': 'Voltage L3',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['690adb20-48d4-11ed-afb1-85eadc94cb00'] = {'uuid': '690adb20-48d4-11ed-afb1-85eadc94cb00', 'name': 'Current L1',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['789eb380-48d4-11ed-b0c0-516a703616a4'] = {'uuid': '789eb380-48d4-11ed-b0c0-516a703616a4', 'name': 'Current L2',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['50ad3b40-48d4-11ed-89e8-1b722d3ecac8'] = {'uuid': '50ad3b40-48d4-11ed-89e8-1b722d3ecac8', 'name': 'Current L3',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65'] = {'uuid': '6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65', 'name': 'Power L1',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['5b52ec20-48d1-11ed-b268-39d935326b4e'] = {'uuid': '5b52ec20-48d1-11ed-b268-39d935326b4e', 'name': 'Power L2',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['49c8bd30-48d1-11ed-b94d-6faf0be07371'] = {'uuid': '49c8bd30-48d1-11ed-b94d-6faf0be07371', 'name': 'Power L3',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['f7bd32e0-48d0-11ed-a6b7-1f623e4f7ffb'] = {'uuid': 'f7bd32e0-48d0-11ed-a6b7-1f623e4f7ffb', 'name': 'Power',
-                                                  'register': 2222, 'tm': 0, 'value': 0.0}
-config['e8db9430-48d5-11ed-a68d-978eb98d6807'] = {'uuid': 'e8db9430-48d5-11ed-a68d-978eb98d6807', 'name': 'Frequency',
-                                                  'register': 2223, 'tm': 0, 'value': 0.0}
+config['1a2e9a30-499f-11ed-bc9c-e1eef2f79f94'] = {'uuid': '1a2e9a30-499f-11ed-bc9c-e1eef2f79f94', 'name': 'Energy IN',                                          'register': 2222, 'tm': 0, 'value': 0.0}
+config['e66150c0-499f-11ed-861f-0bacdd4bde80'] = {'uuid': 'e66150c0-499f-11ed-861f-0bacdd4bde80', 'name': 'Energy OUT',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['836080a0-48d5-11ed-a8d2-b7e8221ba8dc'] = {'uuid': '836080a0-48d5-11ed-a8d2-b7e8221ba8dc', 'name': 'Voltage L1',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['765c38f0-48d5-11ed-a701-6de734b17f2c'] = {'uuid': '765c38f0-48d5-11ed-a701-6de734b17f2c', 'name': 'Voltage L2',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['68ed2b30-48d5-11ed-be74-27d2b336553f'] = {'uuid': '68ed2b30-48d5-11ed-be74-27d2b336553f', 'name': 'Voltage L3',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['690adb20-48d4-11ed-afb1-85eadc94cb00'] = {'uuid': '690adb20-48d4-11ed-afb1-85eadc94cb00', 'name': 'Current L1',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['789eb380-48d4-11ed-b0c0-516a703616a4'] = {'uuid': '789eb380-48d4-11ed-b0c0-516a703616a4', 'name': 'Current L2',                                          'register': 2222, 'tm': 0, 'value': 0.0}
+config['50ad3b40-48d4-11ed-89e8-1b722d3ecac8'] = {'uuid': '50ad3b40-48d4-11ed-89e8-1b722d3ecac8', 'name': 'Current L3',                                          'register': 2222, 'tm': 0, 'value': 0.0}
+config['6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65'] = {'uuid': '6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65', 'name': 'Power L1',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['5b52ec20-48d1-11ed-b268-39d935326b4e'] = {'uuid': '5b52ec20-48d1-11ed-b268-39d935326b4e', 'name': 'Power L2',                                          'register': 2222, 'tm': 0, 'value': 0.0}
+config['49c8bd30-48d1-11ed-b94d-6faf0be07371'] = {'uuid': '49c8bd30-48d1-11ed-b94d-6faf0be07371', 'name': 'Power L3',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['f7bd32e0-48d0-11ed-a6b7-1f623e4f7ffb'] = {'uuid': 'f7bd32e0-48d0-11ed-a6b7-1f623e4f7ffb', 'name': 'Power',                                         'register': 2222, 'tm': 0, 'value': 0.0}
+config['e8db9430-48d5-11ed-a68d-978eb98d6807'] = {'uuid': 'e8db9430-48d5-11ed-a68d-978eb98d6807', 'name': 'Frequency',                                        'register': 2223, 'tm': 0, 'value': 0.0}
 
 #################################################################################
 # Define socket host and port

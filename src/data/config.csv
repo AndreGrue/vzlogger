@@ -1,0 +1,14 @@
+uuid,name,register,tm,value
+1a2e9a30-499f-11ed-bc9c-e1eef2f79f94,Energy IN,0,0,0
+e66150c0-499f-11ed-861f-0bacdd4bde80,Energy OUT,0,0,0
+836080a0-48d5-11ed-a8d2-b7e8221ba8dc,Voltage L1,0,0,0
+765c38f0-48d5-11ed-a701-6de734b17f2c,Voltage L2,0,0,0
+68ed2b30-48d5-11ed-be74-27d2b336553f,Voltage L3,0,0,0
+690adb20-48d4-11ed-afb1-85eadc94cb00,Current L1,0,0,0
+789eb380-48d4-11ed-b0c0-516a703616a4,Current L2,0,0,0
+50ad3b40-48d4-11ed-89e8-1b722d3ecac8,Current L3,0,0,0
+6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65,Power L1,0,0,0
+5b52ec20-48d1-11ed-b268-39d935326b4e,Power L2,0,0,0
+49c8bd30-48d1-11ed-b94d-6faf0be07371,Power L3,0,0,0
+f7bd32e0-48d0-11ed-a6b7-1f623e4f7ffb,Power,0,0,0
+e8db9430-48d5-11ed-a68d-978eb98d6807,Frequency,0,0,0

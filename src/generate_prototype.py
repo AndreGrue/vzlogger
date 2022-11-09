@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+#################################################################################
+import csv
+from typing import List, Dict
+
+
+###
+def generate_prototype_dict(csvfile: str) -> List[Dict]:
+    """
+    generate prototype
+    :param csvfile: a csv file of following format, first line is header
+            a,b,c
+            1,t1,4
+            1,t2,56
+    :return: list of dictionaries
+    """
+    if csvfile:
+        with open(csvfile, mode='r') as infile:
+            file_data = csv.reader(infile)
+            headers = next(file_data)
+            return [dict(zip(headers, i)) for i in file_data]
+
+
+###
+def generate_prototype_obj(csvfile: str) -> List[object]:
+    """
+    generate prototype
+    :param csvfile: a csv file of following format, first line is header
+            a,b,c
+            1,t1,4
+            1,t2,56
+    :return: list of on the fly objects
+    """
+    if csvfile:
+        with open(csvfile, mode='r') as infile:
+            file_data = csv.reader(infile)
+            headers = next(file_data)
+            return [type('prototype', (object,), dict(zip(headers, i))) for i in file_data]
+
+
+###
+def main():
+    data = generate_prototype_dict(csvfile = "data/config.csv")
+    print(*data, sep = "\n")
+
+    data = generate_prototype_obj(csvfile = "data/config.csv")
+    [print(vars(i)) for i in data]
+    print(data[2].uuid)
+
+###
+if __name__ == "__main__":
+    main()
