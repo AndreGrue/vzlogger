@@ -42,6 +42,11 @@ def generate_prototype_obj(csvfile: str) -> List[object]:
 def main():
     data = generate_prototype_dict(csvfile = "data/config.csv")
     print(*data, sep = "\n")
+    print("\n")
+
+    uuid_dict = { i['uuid'] : i for i in data}
+    print(uuid_dict)
+    print("\n")
 
     data = generate_prototype_obj(csvfile = "data/config.csv")
     [print(vars(i)) for i in data]
