@@ -52,6 +52,14 @@ def main():
     [print(vars(i)) for i in data]
     print(data[2].uuid)
 
+    setattr(data[4], 'name', 'test123')
+    print(data[4].name)
+    name = getattr(data[4], 'name')
+    print(name)
+    print(hasattr(data[4], "age"))
+
+
 ###
 if __name__ == "__main__":
     main()
+
