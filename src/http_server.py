@@ -7,8 +7,10 @@ import http.server
 class PostHttpHandler(http.server.BaseHTTPRequestHandler):
     """
     """
-    def __init__(self, callback=None):
-        self._callback = callback
+
+    def handle_content(self, content: str):
+        """ handle content, virtual methode """
+        raise NotImplementedError()
 
     def do_POST(self):
         # get request
@@ -22,9 +24,7 @@ class PostHttpHandler(http.server.BaseHTTPRequestHandler):
 
         #print("POST request,\nPath: %s\nLength: %d\nhost: %s\ncontent_type: %s\n \nBody:\n%s\n"
         #       % (path, content_length, host, content_type, post_data ))
-
-        if self._callback:
-            self._callback(post_data)
+        self.handle_content(post_data)
 
         # send response
         self.send_response(200)
@@ -47,6 +47,7 @@ def run(server_class=http.server.HTTPServer, handler_class=PostHttpHandler, host
 ###
 def main():
     run()
+
 
 ###
 if __name__ == "__main__":

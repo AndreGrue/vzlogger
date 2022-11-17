@@ -5,7 +5,7 @@ from typing import List, Dict
 
 
 ###
-def generate_prototype_dict(csvfile: str) -> List[Dict]:
+def generate_prototype_dict(csvfile: str, delimiter=',') -> List[Dict]:
     """
     generate prototype
     :param csvfile: a csv file of following format, first line is header
@@ -16,15 +16,16 @@ def generate_prototype_dict(csvfile: str) -> List[Dict]:
     """
     if csvfile:
         with open(csvfile, mode='r') as infile:
-            file_data = csv.reader(infile)
+            file_data = csv.reader(infile, delimiter=delimiter)
             headers = next(file_data)
             return [dict(zip(headers, i)) for i in file_data]
 
 
 ###
-def generate_prototype_obj(csvfile: str) -> List[object]:
+def generate_prototype_obj(csvfile: str, delimiter=',') -> List[object]:
     """
     generate prototype
+    :param delimiter:
     :param csvfile: a csv file of following format, first line is header
             a,b,c
             1,t1,4
@@ -33,7 +34,7 @@ def generate_prototype_obj(csvfile: str) -> List[object]:
     """
     if csvfile:
         with open(csvfile, mode='r') as infile:
-            file_data = csv.reader(infile)
+            file_data = csv.reader(infile, delimiter=delimiter)
             headers = next(file_data)
             return [type('prototype', (object,), dict(zip(headers, i))) for i in file_data]
 
