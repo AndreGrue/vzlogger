@@ -1,0 +1,13 @@
+[Unit]
+Description=vzlogger
+After=syslog.target network.target network-online.target ntp.service rc-local.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/vzlogger -c /etc/vzlogger.conf
+ExecReload=
+StandardOutput=null
+User=vzlogger
+
+[Install]
+WantedBy=multi-user.target
