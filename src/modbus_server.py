@@ -31,15 +31,14 @@ _logger = logging.getLogger()
 ###
 class CustomModbusDataBlock(ModbusSparseDataBlock):
     """
-
     """
     def setValues(self, address, value, use_as_default=False):
         super().setValues(address, value, use_as_default)
-        _logger.debug(f"modbus: set {address} = {value}")
+        _logger.info(f"modbus data: set address = {address}, val = {value}")
 
     def getValues(self, address, count=1):
         value = super().getValues(address, count)
-        _logger.debug(f"modbus: get {address} = {value}")
+        _logger.info(f"modbus: get address = {address}, count = {count}, val = {value}")
         return value
 
 
@@ -88,41 +87,6 @@ class ModbusConfig(object):
 
 
 ###
-class ModbusConfigCSV(ModbusConfig):
-    """
-    """
-    def __init__(self, csv_config: str, host="", port=502, unit_id=1):
-        self._csv_config = csv_config
-        self._config = gp.generate_prototype_dict(csvfile=self._csv_config, delimiter=';')
-        super().__init__(host, port, unit_id)
-
-    def _type2val(self, dtype: str, value: str) -> Any:
-        if 'int16' == dtype:
-            return int(value)
-        elif 'uint16' == dtype:
-            return int(value)
-        elif 'int32' == dtype:
-            return int(value)
-        elif 'uint32' == dtype:
-            return int(value)
-        elif 'string' in dtype:
-            return str(value)
-
-    def make_datablock(self):
-        values = {}
-        # _logger.debug(f'config = {self._config}')
-        for i in self._config:
-            address = int(i['Address'])
-            init = i['Initial']
-            dtype = i['Type']
-            values[address] = self._type2val(dtype, init)
-            _logger.debug(f'modbus: config, adr={address}, type={dtype}, init={init}')
-
-        _logger.debug(f'config = {values}')
-        return CustomModbusDataBlock(values)
-
-
-###
 def run_modbus_server(args):
     """
         Run server
@@ -150,7 +114,7 @@ def run_modbus_server(args):
 ###
 def main():
     # args = ModbusConfig(unit_id=30)
-    args = ModbusConfigCSV(unit_id=30, csv_config="data/modbus_field_list.csv")
+    args = ModbusConfig(unit_id=30, csv_config="data/em24_config.csv")
     server = run_modbus_server(args)
     try:
         server.serve_forever()

@@ -1,0 +1,57 @@
+Modicon address;Physical address;Length;Variable;Data format;Notes;Scale factor;Range;Initial;Remarks
+300012;000Bh;1;Carlo Gavazzi identification code;UINT16;;1;0;1650;EM24DINAV23XE1PFB
+340961;A000h;1;Type of application;UINT16;Value=4: “E” application;1;0;4;
+300771;0302h;1;Version and revision code of measurement module;UINT16;;1;0;64;V1.0.0
+300773;0304h;1;Version and revision code of communication module;UINT16;;1;0;64;V1.0.0
+304099;1002h;1;Measuring system;UINT16;Value=0: “3P.n”;1;0;0;
+320481;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+320482;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+320483;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+320484;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+320485;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+320486;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+320487;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;00
+300001;0000h;2;V L1-N;INT32;Value weight: Volt*10;10;0;230;?
+300003;0002h;2;V L2-N;INT32;Value weight: Volt*10;10;0;220;?
+300005;0004h;2;V L3-N;INT32;Value weight: Volt*10;10;0;225;?
+300007;0006h;2;V L1-L2;INT32;Value weight: Volt*10;10;0;0;?
+300009;0008h;2;V L2-L3;INT32;Value weight: Volt*10;10;0;0;?
+300011;000Ah;2;V L3-L1;INT32;Value weight: Volt*10;10;0;0;?
+300013;000Ch;2;A L1;INT32;Value weight: Ampere*1000;1000;0;1230;?
+300015;000Eh;2;A L2;INT32;Value weight: Ampere*1000;1000;0;110;?
+300017;0010h;2;A L3;INT32;Value weight: Ampere*1000;1000;0;200;?
+300019;0012h;2;W L1;INT32;Value weight: Watt*10;10;0;10;?
+300021;0014h;2;W L2;INT32;Value weight: Watt*10;10;0;220;?
+300023;0016h;2;W L3;INT32;Value weight: Watt*10;10;0;3330;?
+300025;0018h;2;VA L1;INT32;Value weight: VA*10;10;0;0;?
+300027;001Ah;2;VA L2;INT32;Value weight: VA*10;10;0;0;?
+300029;001Ch;2;VA L3;INT32;Value weight: VA*10;10;0;0;?
+300031;001Eh;2;VAR L1;INT32;Value weight: var*10;10;0;0;?
+300033;0020h;2;VAR L2;INT32;Value weight: var*10;10;0;0;?
+300035;0022h;2;VAR L3;INT32;Value weight: var*10;10;0;0;?
+300037;0024h;2;V L-N ∑;INT32;Value weight: Volt*10;10;0;0;?
+300039;0026h;2;V L-L ∑;INT32;Value weight: Volt*10;10;0;0;?
+300041;0028h;2;W ∑;INT32;Value weight: Watt*10;10;0;0;?
+300043;002Ah;2;VA ∑;INT32;Value weight: VA*10;10;0;0;?
+300045;002Ch;2;VAR ∑;INT32;Value weight: var*10;10;0;0;?
+300047;002Eh;1;PF L1;INT16;Negative values correspond to lead(C), positive value correspond to lag(L) Value weight: PF*1000;1000;0;0;?
+300048;002Fh;1;PF L2;INT16;Negative values correspond to lead(C), positive value correspond to lag(L) Value weight: PF*1000;1000;0;0;?
+300049;0030h;1;PF L3;INT16;Negative values correspond to lead(C), positive value correspond to lag(L) Value weight: PF*1000;1000;0;0;?
+300050;0031h;1;PF ∑;INT16;Negative values correspond to lead(C), positive value correspond to lag(L) Value weight: PF*1000;1000;0;0;?
+300051;0032h;1;Phase sequence;INT16;Value –1 correspond to L1-L3-L2 sequence, value 0 correspond to L1-L2-L3 sequence (this value is meaningful only in case of 3-phase systems);1;0;0;?
+300052;0033h;1;Hz;UINT16;Value weight: Hz*10;10;0;0;?
+300053;0034h;2;KWh(+) TOT;INT32;Value weight: kWh*10;10;0;0;?
+300055;0036h;2;Kvarh(+) TOT;INT32;Value weight: kvarh*10;10;0;0;?
+300057;0038h;2;DMD W ∑;INT32;Value weight: Watt*10;10;0;0;?
+300059;003Ah;2;DMD W ∑ max;INT32;Value weight: Watt*10;10;0;0;?
+300061;003Ch;2;KWh(+) PAR;INT32;Value weight: kWh*10;10;0;0;?
+300063;003Eh;2;Kvarh(+) PAR;INT32;Value weight: kvarh*10;10;0;0;?
+300065;0040h;2;KWh(+) L1;INT32;Value weight: kWh*10;10;0;0;?
+300067;0042h;2;KWh(+) L2;INT32;Value weight: kWh*10;10;0;0;?
+300069;0044h;2;KWh(+) L3;INT32;Value weight: kWh*10;10;0;0;?
+300071;0046h;2;KWh(+) T1;INT32;Value weight: kWh*10;10;0;0;?
+300073;0048h;2;KWh(+) T2;INT32;Value weight: kWh*10;10;0;0;?
+300075;004Ah;2;KWh(+) T3;INT32;Value weight: kWh*10;10;0;0;?
+300077;004Ch;2;KWh(+) T4;INT32;Value weight: kWh*10;10;0;0;?
+300079;004Eh;2;KWh(-) TOT;INT32;Value weight: kWh*10;10;0;0;?
+341217;A100h;1;Front selector status;UINT16;Value=3: selector locked (“LOCK” position) Value=2: selector unlocked (“1” position) Value=1: selector unlocked (“2” position) Value=0: selector unlocked (“kVARh” position);1;0;3;?
