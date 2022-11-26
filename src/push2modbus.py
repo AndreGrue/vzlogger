@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 #################################################################################
 import json
-import asyncio
-
+import threading
 import generate_prototype as gp
 import http_server as httpd
-import modbus_server as md
+import modbus_server as ms
+import gavazzi_em24 as em24
 
 
 #################################################################################
@@ -16,18 +16,19 @@ _logger = logging.getLogger()
 
 #################################################################################
 # define socket host and port
-HTTP_SERVER_HOST = '127.0.0.1'
-HTTP_SERVER_PORT = 63333
-
-config = {i['uuid']: i for i in gp.generate_prototype_dict(csvfile="data/config.csv")}
-md_args = md.ModbusArgs(unit_id=30)
+http_server_host = '127.0.0.1'
+http_server_port = 63333
+csv_config_file = "data/em24_config.csv"
+config = gp.generate_prototype_dict(csv_config_file, delimiter=';')
+em24_args = em24.EM24ModbusConfig(config, port=502)
+config_dict = {i['uuid']: i for i in config}
 
 
 #################################################################################
 class VolkszaehlerPushHandler(httpd.PostHttpHandler):
     def handle_content(self, content: str):
         """ handle content """
-        #print("content: \n%s" % (content))
+        # print("content: \n%s" % (content))
         data_dict = json.loads(content)
         # print(data_dict['data'])
         for uuid_data in data_dict['data']:
@@ -35,23 +36,25 @@ class VolkszaehlerPushHandler(httpd.PostHttpHandler):
             uuid = uuid_data['uuid']
             tm = uuid_data['tuples'][0][0]
             val = uuid_data['tuples'][0][1]
-            if uuid in config:
-                uuid_conf = config[uuid]
+            if uuid in config_dict:
+                uuid_conf = config_dict[uuid]
                 uuid_conf['tm'] = tm
                 uuid_conf['value'] = val
-                md_args.update_context(0, 3, int(uuid_conf['register']), int(val))
-                print(uuid_conf)
+                em24_args.update_context(0, 0, uuid_conf['Modicon address'], float(val))
+                # print(uuid_conf)
 
 
 #################################################################################
 ###
 def main():
-    asyncio.run(md.run_modbus_server(md_args), debug=True)
-    httpd.run(handler_class=VolkszaehlerPushHandler, host=HTTP_SERVER_HOST, port=HTTP_SERVER_PORT)
+    thrd = threading.Thread(target=ms.run_modbus_server, args=(em24_args, ))
+    thrd.start()
+    httpd.run(handler_class=VolkszaehlerPushHandler, host=http_server_host, port=http_server_port)
+    thrd.join()
 
 
 ###
 if __name__ == "__main__":
-    _logger.setLevel(logging.DEBUG)
+    _logger.setLevel(logging.INFO)
     _logger.addHandler(logging.StreamHandler(sys.stdout))
     main()

@@ -2,7 +2,6 @@
 #################################################################################
 from typing import Any
 import sys
-import generate_prototype as gp
 
 from pymodbus.device import ModbusDeviceIdentification
 
@@ -17,11 +16,11 @@ from pymodbus.transaction import (
 )
 
 from pymodbus.server import (
-    StartAsyncSerialServer,
-    StartAsyncTcpServer,
+ #   StartAsyncSerialServer,
+  #  StartAsyncTcpServer,
     StartTcpServer,
-    StartAsyncTlsServer,
-    StartAsyncUdpServer,
+ #   StartAsyncTlsServer,
+  #  StartAsyncUdpServer,
 )
 
 import logging
@@ -34,7 +33,7 @@ class CustomModbusDataBlock(ModbusSparseDataBlock):
     """
     def setValues(self, address, value, use_as_default=False):
         super().setValues(address, value, use_as_default)
-        _logger.info(f"modbus data: set address = {address}, val = {value}")
+        _logger.info(f"modbus: set address = {address}, val = {value}")
 
     def getValues(self, address, count=1):
         value = super().getValues(address, count)
@@ -46,7 +45,7 @@ class CustomModbusDataBlock(ModbusSparseDataBlock):
 class ModbusConfig(object):
     """
     """
-    def __init__(self, host="", port=502, unit_id=1):
+    def __init__(self, host="", port=502, unit_id=30):
         #
         self.host = host
         self.port = port
@@ -55,9 +54,9 @@ class ModbusConfig(object):
         #
         # datablock = ModbusSequentialDataBlock.create()
         datablock = self.make_datablock()
-        slave_context = ModbusSlaveContext(di=datablock, co=datablock, hr=datablock, ir=datablock, unit=unit_id)
+        self.slave_context = ModbusSlaveContext(di=datablock, co=datablock, hr=datablock, ir=datablock, unit=unit_id)
         single = True
-        self.server_context = ModbusServerContext(slaves=slave_context, single=single)
+        self.server_context = ModbusServerContext(slaves=self.slave_context, single=single)
         #
         self.identity = ModbusDeviceIdentification(
             info_name={
@@ -72,18 +71,18 @@ class ModbusConfig(object):
     def make_datablock(self):
         return CustomModbusDataBlock.create()
 
-    def update_context(self, slave_id, register, address, values):
+    def update_context(self, slave_id, register, address, value):
         """
         :param slave_id:
         :param register:
         :param address:
-        :param values:
+        :param value:
         :return:
         """
-        txt = f"modbus: update, slave_id={slave_id}, register={register}, address={address}, values: {str(values)}"
-        _logger.debug(txt)
+        # txt = f"modbus: update, slave_id={slave_id}, register={register}, address={address}, values: {str(value)}"
+        # _logger.info(txt)
         # self.server_context[slave_id].setValues(register, address, values)
-        self.server_context.setValues(register, address, values)
+        self.slave_context.setValues(register, address, value)
 
 
 ###
@@ -113,13 +112,8 @@ def run_modbus_server(args):
 
 ###
 def main():
-    # args = ModbusConfig(unit_id=30)
-    args = ModbusConfig(unit_id=30, csv_config="data/em24_config.csv")
+    args = ModbusConfig(unit_id=30)
     server = run_modbus_server(args)
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        server.server_close()
     server.shutdown()
 
 

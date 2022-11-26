@@ -1,32 +1,64 @@
 #!/usr/bin/env python3
 #################################################################################
-from typing import Any
+from typing import Any, List, Dict
 import sys
+import time
+import threading
 import generate_prototype as gp
 import modbus_server as ms
-
 import logging
 _logger = logging.getLogger()
 
 
 ###
+def modicon2adr(modicon: str) -> int:
+    '''
+
+    :param modicon:
+    :return:
+    '''
+    madr = int(modicon)
+    if 300000 < madr:
+        return madr - 300000
+    elif 400000 < madr:
+        return madr - 400000
+    else:
+        return madr
+
+
+###
+def make_int(value: str) -> int:
+    if '0x' in value:
+        return int(value, 16)
+    else:
+        return int(value)
+
+
+###
+def type2value(dtype: str, value: str) -> Any:
+    '''
+
+    :param self:
+    :param dtype:
+    :param value:
+    :return:
+    '''
+    if 'int16' == dtype or 'INT16' == dtype:
+        return [int(value)]
+    elif 'uint16' == dtype or 'UINT16' == dtype:
+        return [int(value)]
+    elif 'int32' == dtype or 'INT32' == dtype:
+        return [0xFFFF & int(value), 0xFFFF0000 & int(value) >> 16]
+    elif 'uint32' == dtype or 'UINT32' == dtype:
+        return [0xFFFF & int(value), 0xFFFF0000 & int(value) >> 16]
+    elif 'string' in dtype:
+        return str(value)
+    else:
+        return None
+
+
+###
 class EM24ModbusDataBlock(ms.CustomModbusDataBlock):
-    """
-    """
-    def __init__(self, values, config):
-        self._config = config
-        super().__init__(values)
-
-    def setValues(self, address, value, use_as_default=False):
-        """
-
-        :param address:
-        :param value:
-        :param use_as_default:
-        :return:
-        """
-        super().setValues(address, value, use_as_default)
-
     def getValues(self, address, count=1):
         """
 
@@ -34,7 +66,7 @@ class EM24ModbusDataBlock(ms.CustomModbusDataBlock):
         :param count:
         :return:
         """
-        if address == 12 and count == 1:  # set gavazzi id code
+        if address == 12 and count == 1:  # spezific handling for gavazzi id code
             value = [1650]
             _logger.info(f"modbus: get address = {address}, count = {count}, val = {value}")
         else:
@@ -47,64 +79,50 @@ class EM24ModbusConfig(ms.ModbusConfig):
     """
 
     """
-    def __init__(self, csv_config: str, host="", port=502, unit_id=30):
-        self._csv_config = csv_config
-        self._config = gp.generate_prototype_dict(csvfile=self._csv_config, delimiter=';')
+    def __init__(self, config: List[Dict], host="", port=502, unit_id=1):
+        self._config = config
         super().__init__(host, port, unit_id)
-
-    def _make_int(self, value: str) -> int:
-        if '0x' in value:
-            return int(value, 16)
-        else:
-            return int(value)
-
-    def _type2val(self, dtype: str, value: str) -> Any:
-        if 'int16' == dtype or 'INT16' == dtype:
-            return int(value)
-        elif 'uint16' == dtype or 'UINT16' == dtype:
-            return self._make_int(value)
-        elif 'int32' == dtype or 'INT32' == dtype:
-            return [0xFFFF0000 & int(value) >> 16, 0xFFFF & int(value)]
-        elif 'uint32' == dtype or 'UINT32' == dtype:
-            return [0xFFFF0000 & int(value) >> 16, 0xFFFF & int(value)]
-        elif 'string' in dtype:
-            return str(value)
-        else:
-            return None
-
-    @staticmethod
-    def _modicon2adr(modicon: str) -> int:
-        madr = int(modicon)
-        if 300000 < madr:
-            return madr - 300000
-        elif 400000 < madr:
-            return madr - 400000
-        else:
-            return madr
 
     def make_datablock(self):
         values = {}
         # _logger.debug(f'config = {self._config}')
         for i in self._config:
-            address = self._modicon2adr(i['Modicon address'])
+            address = modicon2adr(i['Modicon address'])
             init = i['Initial']
-            dtype = i['Data format']
-            values[address] = self._type2val(dtype, init)
+            dtype = i['Data type']
+            values[address] = type2value(dtype, init)
             _logger.debug(f'modbus: config, adr={address}, type={dtype}, init={init}')
 
         _logger.debug(f'config = {values}')
         return EM24ModbusDataBlock(values, self._config)
 
+    def update_context(self, slave_id, register, address, value):
+        config = next(item for item in self._config if item["Modicon address"] == address)
+        if config is not None:
+            adr = modicon2adr(config['Modicon address']) - 1
+            min = config['Min']
+            max = config['Max']
+            factor = float(config['Scale factor'])
+            unit = config['Unit']
+            length = config['Length']
+            dtype = config['Data type']
+            val = type2value(dtype, value * factor)
+
+            super().update_context(0, 3, adr, val)
+
 
 ###
 def main():
-    args = EM24ModbusConfig(csv_config="data/em24_config.csv")
-    server = ms.run_modbus_server(args)
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        server.server_close()
-    server.shutdown()
+    csv_config = "data/em24_config.csv"
+    config = gp.generate_prototype_dict(csv_config, delimiter=';')
+    args = EM24ModbusConfig(config)
+
+    x = threading.Thread(target=ms.run_modbus_server, args=(args, ))
+    x.start()
+    for i in range(0, 100):
+        time.sleep(1)
+        args.update_context(0, 0, '300001', 200+i)
+    x.join()
 
 
 ###
