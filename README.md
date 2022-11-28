@@ -66,3 +66,17 @@ sudo raspi-config
 goto -> Performance Options -> Enable Overlay File System
 
 
+## Energy meter
+
+https://www.enika.eu/data/files/produkty/energy%20m/CP/em24%20ethernet%20cp.pdf
+
+### setup python venv
+
+~~~commandline
+cd ${WDIR}
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install --upgrade pip
+pip3 install -r requirements.txt
+~~~
+
