@@ -1,4 +1,5 @@
 # volkszaehler
+Configuration  and settings of a Raspberry PI installation of a Volkszaehler.
 
 volkszaehler.org   
 
@@ -46,7 +47,7 @@ sudo systemctl stop *
 sudo systemctl disable *
 ~~~
 
-## crontab
+## crontab - automatic daily reboot
 ~~~
 sudo crontab -e
 ~~~
@@ -66,16 +67,22 @@ sudo raspi-config
 goto -> Performance Options -> Enable Overlay File System
 
 
+
 ## Energy meter
 
-https://www.enika.eu/data/files/produkty/energy%20m/CP/em24%20ethernet%20cp.pdf
+EM24DINAV23XE1PFB    
+https://gavazziautomation.com   
+https://www.enika.eu/data/files/produkty/energy%20m/CP/em24%20ethernet%20cp.pdf   
 
 ### setup python venv
 
 ~~~commandline
-cd ${WDIR}
-python3 -m venv .venv
-source .venv/bin/activate
+sudo apt-get install python3 python3-pip python3-venv
+WORKDIR=/home/pi/push2modbus
+VENV=.venv
+cd ${WORKDIR}
+python3 -m venv ${VENV}
+source ${VENV}/bin/activate
 pip3 install --upgrade pip
 pip3 install -r requirements.txt
 ~~~

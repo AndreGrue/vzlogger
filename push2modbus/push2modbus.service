@@ -1,0 +1,15 @@
+[Unit]
+Description=push2modbus service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/pi/push2modbus
+Environment=PYTHONPATH=/home/user/somedir
+ExecStart=/home/user/venv/bin/python script.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

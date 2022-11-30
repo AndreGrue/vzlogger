@@ -18,7 +18,7 @@ _logger = logging.getLogger()
 # define socket host and port
 http_server_host = '127.0.0.1'
 http_server_port = 63333
-csv_config_file = "data/em24_config.csv"
+csv_config_file = "../data/em24_config.csv"
 config = gp.generate_prototype_dict(csv_config_file, delimiter=';')
 em24_args = em24.EM24ModbusConfig(config, port=502)
 config_dict = {i['uuid']: i for i in config}
