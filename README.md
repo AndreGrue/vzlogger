@@ -76,6 +76,9 @@ https://www.enika.eu/data/files/produkty/energy%20m/CP/em24%20ethernet%20cp.pdf
 
 ### setup python venv
 
+copy folder push2modbus to /hom/pi/push2modbus.
+
+create python virtual environment:   
 ~~~commandline
 sudo apt-get install python3 python3-pip python3-venv
 WORKDIR=/home/pi/push2modbus
@@ -85,5 +88,24 @@ python3 -m venv ${VENV}
 source ${VENV}/bin/activate
 pip3 install --upgrade pip
 pip3 install -r requirements.txt
+~~~
+
+
+### systemd service
+
+copy service:    
+~~~commandline
+cp ./push2modbus.service /etc/systemd/system
+~~~
+
+enable and restart service:   
+~~~commandline
+sudo systemctl enable push2modbus.service
+sudo systemctl restart push2modbus.service
+~~~
+
+check status of service:   
+~~~commandline
+sudo systemctl status push2modbus.service
 ~~~
 

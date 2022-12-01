@@ -8,6 +8,7 @@ from typing import List, Dict
 def generate_prototype_dict(csvfile: str, delimiter=',') -> List[Dict]:
     """
     generate prototype
+    :param delimiter:
     :param csvfile: a csv file of following format, first line is header
             a,b,c
             1,t1,4

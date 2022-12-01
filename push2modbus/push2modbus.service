@@ -7,8 +7,8 @@ Type=simple
 User=root
 Group=root
 WorkingDirectory=/home/pi/push2modbus
-Environment=PYTHONPATH=/home/user/somedir
-ExecStart=/home/user/venv/bin/python script.py
+Environment=PATH=/home/pi/push2modbus/.venv/bin
+ExecStart=/home/pi/push2modbus/.venv/bin/python3 push2modbus.py -c /home/pi/push2modbus/data/em24_config.csv
 Restart=on-failure
 
 [Install]

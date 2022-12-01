@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 #################################################################################
 import json
+import pathlib
 import threading
+import argparse
 import generate_prototype as gp
 import http_server as httpd
 import modbus_server as ms
 import gavazzi_em24 as em24
+
+
+#################################################################################
+parser = argparse.ArgumentParser(description='push2modbus - vzlogger modbus server')
+parser.add_argument('-c', '--configuration', type=pathlib.Path, required=True, help='a CSV configuration file')
+args = parser.parse_args()
 
 
 #################################################################################
@@ -18,7 +26,7 @@ _logger = logging.getLogger()
 # define socket host and port
 http_server_host = '127.0.0.1'
 http_server_port = 63333
-csv_config_file = "../data/em24_config.csv"
+csv_config_file = args.configuration
 config = gp.generate_prototype_dict(csv_config_file, delimiter=';')
 em24_args = em24.EM24ModbusConfig(config, port=502)
 config_dict = {i['uuid']: i for i in config}
