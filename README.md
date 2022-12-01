@@ -1,10 +1,7 @@
 # volkszaehler
-Configuration  and settings of a Raspberry PI installation of a Volkszaehler.
+Configuration and settings of a Raspberry PI installation of a Volkszaehler.
 
 volkszaehler.org   
-
-https://wiki.volkszaehler.org/howto/datenmengen   
-https://wiki.volkszaehler.org/howto/node-red   
 
 
 ## hardware
@@ -69,10 +66,16 @@ goto -> Performance Options -> Enable Overlay File System
 
 
 ## Energy meter
+Python scripts to simulate an energy meter (Carlo Gavazzi EM24 Ethernet).   
+Type: EM24DINAV23XE1PFB    
 
-EM24DINAV23XE1PFB    
-https://gavazziautomation.com   
-https://www.enika.eu/data/files/produkty/energy%20m/CP/em24%20ethernet%20cp.pdf   
+[Manufacturer](https://gavazziautomation.com)   
+[Modbus TCP Protocol description](https://www.enika.eu/data/files/produkty/energy%20m/CP/em24%20ethernet%20cp.pdf)
+
+
+### configuration
+Configuration:  [em24_config.csv](./push2modbus/data/em24_config.csv)
+
 
 ### setup python venv
 

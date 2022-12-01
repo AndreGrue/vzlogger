@@ -1,28 +1,28 @@
 uuid;Modicon address;Physical address;Length;Variable;Data type;Notes;Scale factor;Min;Max;Initial;Unit;Remarks
 ;300012;000Bh;1;Carlo Gavazzi identification code;UINT16;;1;0;0;1650;;EM24DINAV23XE1PFB
 ;340961;A000h;1;Type of application;UINT16;Value=4: “E” application;1;0;0;4;;x
-;300771;0302h;1;Version and revision code of measurement module;UINT16;;1;0;0;64;;V1.0.0
-;300773;0304h;1;Version and revision code of communication module;UINT16;;1;0;0;64;;V1.0.0
+;300771;0302h;1;Version and revision code of measurement module;UINT16;;1;0;0;4096;;V1.0.0
+;300773;0304h;1;Version and revision code of communication module;UINT16;;1;0;0;4096;;V1.0.0
 ;304099;1002h;1;Measuring system;UINT16;Value=0: “3P.n”;1;0;0;0;;
-;320481;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-;320482;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-;320483;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-;320484;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-;320485;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-;320486;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-;320487;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;0;;00
-68ed2b30-48d5-11ed-be74-27d2b336553f;300001;0000h;2;V L1-N;INT32;Value weight: Volt*10;10;0;0;230;Volt;?
-765c38f0-48d5-11ed-a701-6de734b17f2c;300003;0002h;2;V L2-N;INT32;Value weight: Volt*10;10;0;0;220;Volt;?
-836080a0-48d5-11ed-a8d2-b7e8221ba8dc;300005;0004h;2;V L3-N;INT32;Value weight: Volt*10;10;0;0;225;Volt;?
+;320481;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+;320482;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+;320483;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+;320484;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+;320485;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+;320486;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+;320487;5000h;1;Letter n (from SX) Letter n+1 (from SX);UINT16;MSB: ASCII code LSB: ASCII code;1;0;0;24929;;00
+68ed2b30-48d5-11ed-be74-27d2b336553f;300001;0000h;2;V L1-N;INT32;Value weight: Volt*10;10;0;0;0;Volt;?
+765c38f0-48d5-11ed-a701-6de734b17f2c;300003;0002h;2;V L2-N;INT32;Value weight: Volt*10;10;0;0;0;Volt;?
+836080a0-48d5-11ed-a8d2-b7e8221ba8dc;300005;0004h;2;V L3-N;INT32;Value weight: Volt*10;10;0;0;0;Volt;?
 ;300007;0006h;2;V L1-L2;INT32;Value weight: Volt*10;10;0;0;0;Volt;?
 ;300009;0008h;2;V L2-L3;INT32;Value weight: Volt*10;10;0;0;0;Volt;?
 ;300011;000Ah;2;V L3-L1;INT32;Value weight: Volt*10;10;0;0;0;Volt;?
-50ad3b40-48d4-11ed-89e8-1b722d3ecac8;300013;000Ch;2;A L1;INT32;Value weight: Ampere*1000;1000;0;0;1230;Ampere;?
-690adb20-48d4-11ed-afb1-85eadc94cb00;300015;000Eh;2;A L2;INT32;Value weight: Ampere*1000;1000;0;0;110;Ampere;?
-789eb380-48d4-11ed-b0c0-516a703616a4;300017;0010h;2;A L3;INT32;Value weight: Ampere*1000;1000;0;0;200;Ampere;?
-49c8bd30-48d1-11ed-b94d-6faf0be07371;300019;0012h;2;W L1;INT32;Value weight: Watt*10;10;0;0;10;Watt;?
-5b52ec20-48d1-11ed-b268-39d935326b4e;300021;0014h;2;W L2;INT32;Value weight: Watt*10;10;0;0;220;Watt;?
-6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65;300023;0016h;2;W L3;INT32;Value weight: Watt*10;10;0;0;3330;Watt;?
+50ad3b40-48d4-11ed-89e8-1b722d3ecac8;300013;000Ch;2;A L1;INT32;Value weight: Ampere*1000;1000;0;0;0;Ampere;?
+690adb20-48d4-11ed-afb1-85eadc94cb00;300015;000Eh;2;A L2;INT32;Value weight: Ampere*1000;1000;0;0;0;Ampere;?
+789eb380-48d4-11ed-b0c0-516a703616a4;300017;0010h;2;A L3;INT32;Value weight: Ampere*1000;1000;0;0;0;Ampere;?
+49c8bd30-48d1-11ed-b94d-6faf0be07371;300019;0012h;2;W L1;INT32;Value weight: Watt*10;10;0;0;0;Watt;?
+5b52ec20-48d1-11ed-b268-39d935326b4e;300021;0014h;2;W L2;INT32;Value weight: Watt*10;10;0;0;0;Watt;?
+6b0fa3a0-48d1-11ed-af3b-9d97bcef9c65;300023;0016h;2;W L3;INT32;Value weight: Watt*10;10;0;0;0;Watt;?
 ;300025;0018h;2;VA L1;INT32;Value weight: VA*10;10;0;0;0;VA;?
 ;300027;001Ah;2;VA L2;INT32;Value weight: VA*10;10;0;0;0;VA;?
 ;300029;001Ch;2;VA L3;INT32;Value weight: VA*10;10;0;0;0;VA;?
