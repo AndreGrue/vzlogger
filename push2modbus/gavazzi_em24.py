@@ -48,9 +48,9 @@ def type2value(dtype: str, value: str) -> Any:
     elif 'uint16' == dtype or 'UINT16' == dtype:
         return [int(value)]
     elif 'int32' == dtype or 'INT32' == dtype:
-        return [0xFFFF & int(value), 0xFFFF0000 & int(value) >> 16]
+        return [0xFFFF & int(value), (0xFFFF0000 & int(value)) >> 16]
     elif 'uint32' == dtype or 'UINT32' == dtype:
-        return [0xFFFF & int(value), 0xFFFF0000 & int(value) >> 16]
+        return [0xFFFF & int(value), (0xFFFF0000 & int(value)) >> 16]
     elif 'string' in dtype:
         return str(value)
     else:
